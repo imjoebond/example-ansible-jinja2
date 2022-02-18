@@ -6,8 +6,8 @@
 - name: 'Jinja2 templating playbook'
 
   # Target: where our play will run and options it will run with
-  hosts: all
-  gather_facts: true
+  hosts: webservers
+  gather_facts: false
 
   # Task: the list of tasks that will be executed within the playbook
   tasks:       
@@ -15,7 +15,6 @@
        debug:
          msg: >
               --=== Ansible Jinja2 if variable is defined ( where variable is defined)  ===---
-              {% set example_variable = 'defined' -%}
               {% if example_variable is defined -%}
                      example_variable is defined              
               {% else -%}

@@ -6,14 +6,17 @@
 - name: 'Accessing the facts inside the playbook'
 
   # Target: where our play will run and options it will run with
-  hosts: all
+  hosts: localhost
+  connection: local
   gather_facts: true
 
   # Task: the list of tasks that will be executed within the playbook
   tasks:       
      - name: Show IP Address
        debug:
-         msg: "{{ ansible_default_ipv4.address }}"
+         msg: 
+          - "ip: {{ ansible_default_ipv4.address }}"
+          - "facts: {{ansible_facts}}"
 
 # Three dots indicate the end of a YAML document
 ...

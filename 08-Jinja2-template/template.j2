@@ -1,22 +1,22 @@
 ---=== Jinja2 template if statement ===---
 
-{% if ansible_hostname == "ansnode2" -%}
+{% if ansible_hostname == "area52" -%}
     This is {{ ansible_hostname }} host
 {% endif %}
 
 --=== Ansible Jinja2 if elif statement ===---
 
-{% if ansible_hostname == "ansnode2" -%}
+{% if ansible_hostname == "area52" -%}
      This is {{ ansible_hostname }} host
-{% elif ansible_hostname == "ansnode3" -%}
+{% elif ansible_hostname == "area53" -%}
      This is {{ ansible_hostname }} host with modifications
 {% endif %}
 
 --=== Ansible Jinja2 if elif else statement ===---
 
-{% if ansible_hostname == "ansnode2" -%}
+{% if ansible_hostname == "area52" -%}
       This is {{ ansible_hostname }} host
-{% elif ansible_hostname == "ansnode3" -%}
+{% elif ansible_hostname == "area53" -%}
       This is {{ ansible_hostname }}  host with modifications
 {% else -%}
       This is default {{ ansible_hostname }} host
@@ -51,46 +51,3 @@
      {{ entry }}
 {% endfor %}
 
---=== Ansible Jinja2 for range , reversed(simulate while greater 5)  ===---
-
-{% for entry in range(10, 0, -1) -%}
-   {% if entry == 5 -%}
-      {% break %}
-   {% endif -%}
-   {{ entry }}
-{% endfor %}
-
---=== Ansible Jinja2 for range , reversed(continue if odd)  ===---
-
-{% for entry in range(10, 0, -1) -%}
-   {% if entry is odd -%}
-      {% continue %}
-   {% endif -%}
-   {{ entry }}
-{% endfor %}
-
---=== Ansible Jinja2 for filters ===---
-
---== Min Value ==--
-
-{{ [1,2,3,4,5] | min }}
-
---== Max Value ==--
-
-{{ [1,2,3,4,5] | max }}
-
---== Unique value ==--
-
-{{ [1, 1, 2, 2, 3, 3, 4, 4, 5, 5] | unique }}
-
---== difference value ==--
-
-{{ [1, 2, 3, 4, 5] | difference([2, 3, 4]) }}
-
---== Random value ==--
-
-{{ ['rob', 'jane', 'freddy'] | random }}
-
---== url split ==--
-
-{{ "http://docs.ansible.com/ansible/latest/playbooks_filters.html" | urlsplit('hostname') }}

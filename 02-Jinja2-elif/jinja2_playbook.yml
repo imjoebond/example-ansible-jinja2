@@ -6,8 +6,8 @@
 - name: 'Jinja2 templating playbook'
 
   # Target: where our play will run and options it will run with
-  hosts: all
-  gather_facts: true
+  hosts: webservers
+  gather_facts: false
 
   # Task: the list of tasks that will be executed within the playbook
   tasks:       
@@ -15,9 +15,9 @@
        debug:
          msg: >
               --=== Ansible Jinja2 if elif statement ===---
-              {% if ansible_hostname == "ansnode2" -%}
+              {% if ansible_hostname == "area52" -%}
                      This is {{ ansible_hostname }} host
-              {% elif ansible_hostname == "ansnode3" -%}
+              {% elif ansible_hostname == "area51" -%}
                      This is {{ ansible_hostname }} host with modifications
               {% endif %}
 
