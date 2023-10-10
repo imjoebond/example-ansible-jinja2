@@ -15,8 +15,10 @@
      - name: Show IP Address
        debug:
          msg: 
-          - "ip: {{ ansible_default_ipv4.address }}"
           - "facts: {{ansible_facts}}"
+          - "ip: {{ ansible_default_ipv4.address }}"
+          - "just a plain old static miessage"
+          
 
 # Three dots indicate the end of a YAML document
 ...
